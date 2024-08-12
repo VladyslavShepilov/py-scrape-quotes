@@ -58,11 +58,11 @@ def main(output_csv_path: str) -> None:
         page_soup = retrieve_page_soup(page_num)
         parse_page(page_soup, result_arr)
 
-    with open(output_csv_path, "w") as file:
+    with open(output_csv_path, "w", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(["Text", "Author", "Tags"])
+        writer.writerow(["text", "author", "tags"])
         for quote in result_arr:
-            writer.writerow([quote.text, quote.author, ", ".join(quote.tags)])
+            writer.writerow([quote.text, quote.author, quote.tags])
 
 
 if __name__ == "__main__":
